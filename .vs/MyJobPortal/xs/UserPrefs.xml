@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{A1B5298E-10D7-4E71-81CB-603B5D5C8F9B}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/Index.cshtml">
+    <Files>
+      <File FileName="Pages/Index.cshtml" Line="11" Column="7" />
+      <File FileName="Pages/Index.cshtml.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MyJobPortal" expanded="True">
+            <Node name="MyJobPortal" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Shared" expanded="True" />
+                <Node name="Index.cshtml" expanded="True" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.MyJobPortal PreferredExecutionTarget="/Applications/Brave Browser.app" />
+</Properties>

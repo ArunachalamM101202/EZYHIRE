@@ -1,0 +1,98 @@
+﻿@page
+@model MyJobPortal.Pages.IndexModel
+@{
+    ViewData["Title"] = "Job Listings";
+}
+
+<h2>@ViewData["Title"]</h2>
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Home page";
+    // Access session variables
+    var userId = HttpContext.Session.GetString("UserId");
+    var userName = HttpContext.Session.GetString("UserName");
+    var userAge = HttpContext.Session.GetString("UserAge");
+    var userEmail = HttpContext.Session.GetString("UserEmail");
+    var userPhone = HttpContext.Session.GetString("UserPhone");
+}
+@if (string.IsNullOrEmpty(userName))
+{
+    @* Redirect if session is not set that is string is empty or Null *@
+    <script>
+    window.location.href = "/Login"; 
+</script>
+}
+
+
+
+<form method="get">
+    <label for="companySearch">Search by Company:</label>
+    <input type="text" name="companySearch" id="companySearch" value="@Model.CompanySearch" />
+    <button type="submit">Search</button>
+</form>
+
+
+<form method="get">
+    <label for="positionSearch">Search by Position Name:</label>
+    <input type="text" name="positionSearch" id="positionSearch" value="@Model.PositionSearch" />
+    <button type="submit">Search</button>
+</form>
+
+<!-- Clear button to reset the search -->
+<form method="get">
+    <button type="submit" name="clearSearch">Clear</button>
+</form>
+
+@if (Model.Jobs != null && Model.Jobs.Count > 0)
+{
+    <!-- Display job listings -->
+    <table>
+    <!-- Table headers -->
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Position Name</th>
+            <th>Team Name</th>
+            <th>Company Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Experience</th>
+            <th>Job Description</th>
+            <th>Minimum Qualification</th>
+            <th>Last Date</th>
+            <th>Apply</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table rows based on search results or all jobs -->
+
+        @foreach (var job in Model.Jobs)
+            {
+                <tr>
+                    <td>@job.ID</td>
+                    <td>@job.PositionName</td>
+                    <td>@job.TeamName</td>
+                    <td>@job.CompanyName</td>
+                    <td>@job.Address</td>
+                    <td>@job.Salary</td>
+                    <td>@job.Experience</td>
+                    <td>@job.JobDescription</td>
+                    <td>@job.MinimumQualification</td>
+                    <td>@job.LastDate</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="jobId" value="@job.ID" />
+                            <button type="submit" name="applyButton">Apply</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <!-- Display message when no job listings are available -->
+    <p>No job listings available.</p>
+}
