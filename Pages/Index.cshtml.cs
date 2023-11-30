@@ -16,9 +16,9 @@ namespace MyJobPortal.Pages
     public static class TwilioHelper
     {
         // Replace these with your Twilio account SID, auth token, and Twilio phone number
-        private const string AccountSid = "ACd7cc01b48b08e606d1e5d771e1aec955";
-        private const string AuthToken = "92c879b66764c359f4518a09bbe7347f";
-        private const string TwilioPhoneNumber = "+19093462769";
+        private const string AccountSid = "your accoundsid";
+        private const string AuthToken = "your auth token";
+        private const string TwilioPhoneNumber = "your phone number";
 
         public static void SendSMS(string toPhoneNumber, string messageBody)
         {
