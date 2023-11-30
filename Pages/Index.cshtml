@@ -1,13 +1,10 @@
 ﻿@page
 @model MyJobPortal.Pages.IndexModel
-@{
-    ViewData["Title"] = "Job Listings";
-}
 
 <h2>@ViewData["Title"]</h2>
 @using Microsoft.AspNetCore.Http
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
     // Access session variables
     var userId = HttpContext.Session.GetString("UserId");
     var userName = HttpContext.Session.GetString("UserName");
@@ -23,76 +20,457 @@
 </script>
 }
 
+<head>
+    <script src="https://kit.fontawesome.com/1a0babe9d4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #f2f2f2;
+        }
 
 
-<form method="get">
-    <label for="companySearch">Search by Company:</label>
-    <input type="text" name="companySearch" id="companySearch" value="@Model.CompanySearch" />
-    <button type="submit">Search</button>
-</form>
+        .ag-format-container {
+            width: 1142px;
+            margin: 0 auto;
+        }
+
+        .ag-courses_box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+            padding: 50px 0;
+        }
+
+        .ag-courses_item {
+            -ms-flex-preferred-size: calc(33.33333% - 30px);
+            flex-basis: calc(33.33333% - 30px);
+
+            margin: 0 15px 30px;
+
+            overflow: hidden;
+
+            border-radius: 28px;
+        }
+
+        .ag-courses-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: #121212;
+            text-decoration: none;
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+            text-decoration: none;
+            color: #FFF;
+        }
+
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+            -webkit-transform: scale(10);
+            -ms-transform: scale(10);
+            transform: scale(10);
+        }
+
+        .ag-courses-item_title {
+            min-height: 87px;
+            margin: 0 0 25px;
+
+            overflow: hidden;
+
+            font-weight: bold;
+            font-size: 30px;
+            color: #FFF;
+
+            z-index: 2;
+            position: relative;
+        }
+
+        .ag-courses-item_date-box {
+            font-size: 18px;
+            color: #FFF;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .ag-courses-item_date {
+            font-weight: bold;
+            color: #f9b234;
+
+            -webkit-transition: color .5s ease;
+            -o-transition: color .5s ease;
+            transition: color .5s ease
+        }
+
+        .ag-courses-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color: #f9b234;
+
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+
+            border-radius: 50%;
+
+            -webkit-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+            background-color: #3ecd5e;
+        }
+
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+            background-color: #e44002;
+        }
+
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+            background-color: #952aff;
+        }
+
+        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+            background-color: #cd3e94;
+        }
+
+        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+            background-color: #4c49ea;
+        }
+
+        .index-page-title {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 50px;
+            font-family: 'Oswald';
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 500px;
+            height: 60px;
+            border: 4px solid black;
+            outline: none;
+            border-radius: 40px;
+            font-family: 'Oswald';
+            font-size: 22px;
+            text-align: center;
+            color: black;
+        }
+
+        .search-button {
+            width: 80px;
+            /* Adjust width as needed */
+            height: 60px;
+            /* Match the height of the search bar */
+            border: 4px solid black;
+            outline: none;
+            border-radius: 40px;
+            background-color: #007bff;
+            /* Example button color, adjust as needed */
+            color: white;
+            /* Text color of the button */
+            font-family: 'Oswald';
+            font-size: 22px;
+            cursor: pointer;
+            margin-left: -60px;
+            /* Adjust margin to align button with the border of the search bar */
+        }
 
 
-<form method="get">
-    <label for="positionSearch">Search by Position Name:</label>
-    <input type="text" name="positionSearch" id="positionSearch" value="@Model.PositionSearch" />
-    <button type="submit">Search</button>
-</form>
+        .search-bar::placeholder {
+            font-family: 'Oswald';
+            font-size: 22px;
+            text-align: center;
+            color: black;
+        }
 
-<!-- Clear button to reset the search -->
-<form method="get">
-    <button type="submit" name="clearSearch">Clear</button>
-</form>
+        .clear-button {
+            width: 80px;
+            /* Adjust width as needed */
+            height: 60px;
+            /* Match the height of the search bar */
+            border: 4px solid black;
+            outline: none;
+            background-color: rgb(187, 4, 4);
+            font-size: 22px;
+            border-radius: 20px;
+            color: white;
+            margin-left: -40px;
+            cursor: pointer;
 
-@if (Model.Jobs != null && Model.Jobs.Count > 0)
-{
-    <!-- Display job listings -->
-    <table>
-    <!-- Table headers -->
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Position Name</th>
-            <th>Team Name</th>
-            <th>Company Name</th>
-            <th>Address</th>
-            <th>Salary</th>
-            <th>Experience</th>
-            <th>Job Description</th>
-            <th>Minimum Qualification</th>
-            <th>Last Date</th>
-            <th>Apply</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Table rows based on search results or all jobs -->
+        }
 
-        @foreach (var job in Model.Jobs)
+        .search-flex {
+            display: flex;
+        }
+
+        .search-flex-item {
+            margin-left: 100px;
+            margin-right: 30px;
+        }
+
+        .job-listings-search {
+            margin-bottom: 40px;
+        }
+
+        .job-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            /* Adjust the gap between cards as needed */
+            justify-content: center;
+        }
+
+        .job-card {
+            max-width: 400px;
+            /* Adjust the maximum width of each card as needed */
+            background-color: #f5f5f5;
+            /* Example background color, adjust as needed */
+            border: 1px solid #ddd;
+            /* Example border color, adjust as needed */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Example box shadow, adjust as needed */
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        .job-card:hover {
+            /* Box shadow on hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        .job-info {
+            margin-bottom: 20px;
+        }
+
+        .apply-button {
+            text-align: center;
+        }
+
+        .style-apply {
+            padding: 20px;
+            padding-left: 80px;
+            padding-right: 80px;
+            border-radius: 30px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            border: 3px solid black;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .style-apply:hover {
+            background-color: black;
+        }
+
+        .job-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: justify;
+            margin-top: 10px;
+        }
+
+        /* Add any additional styling as needed */
+    </style>
+</head>
+
+<div class="index-header">
+    <h1 class="index-page-title">EZYHIRE - Bridging Careers One Step at a Time</h1>
+    <div class="ag-format-container">
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+
+                    <div class="ag-courses-item_title">
+                        Effortless Job Search
+                    </div>
+
+                    <div class="ag-courses-item_date-box">
+                        Explore a vast array of job opportunities
+                        <span class="ag-courses-item_date">
+                            effortlessly tailored to your preferences.
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+
+                    <div class="ag-courses-item_title">
+                        Instant Job Application
+                    </div>
+
+                    <div class="ag-courses-item_date-box">
+                        Apply to your dream job with just a click,
+                        <span class="ag-courses-item_date">
+                            streamlining the application process for quick results.
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+
+                    <div class="ag-courses-item_title">
+                        Personalized Matches
+                    </div>
+
+                    <div class="ag-courses-item_date-box">
+                        Our advanced algorithm matches you with roles that
+                        <span class="ag-courses-item_date">
+                            align with your skills and aspirations.
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+
+                    <div class="ag-courses-item_title">
+                        Real-Time Notifications:
+                    </div>
+
+                    <div class="ag-courses-item_date-box">
+                        Stay updated with instant notifications on
+                        <span class="ag-courses-item_date">
+                            new job postings and application status.
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+
+                    <div class="ag-courses-item_title">
+                        User-Friendly Interface
+                    </div>
+
+                    <div class="ag-courses-item_date-box">
+                        Navigate through an intuitive and user-friendly platform designed for
+                        <span class="ag-courses-item_date">
+                            seamless job hunting.
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+
+                    <div class="ag-courses-item_title">
+                        Secure and Confidential
+                    </div>
+
+                    <div class="ag-courses-item_date-box">
+                        Your personal information is handled securely, ensuring a
+                        <span class="ag-courses-item_date">
+                            confidential job search experience.
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="job-listings-search">
+    <h1 class="index-page-title">Trending Jobs</h1>
+
+    <div class="search-flex">
+        <form method="get" class="search-flex-item">
+            @* <label for="companySearch">Search by Company:</label> *@
+            <div class="search-container">
+                <input type="text" class="search-bar" name="companySearch" id="companySearch"
+                    value="@Model.CompanySearch" placeholder="Search by Company" />
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+
+
+        <form method="get">
+            <div class="search-container" class="search-flex-item">
+                @* <label for="positionSearch">Search by Position Name:</label> *@
+                <input type="text" name="positionSearch" id="positionSearch" value="@Model.PositionSearch"
+                    placeholder="Search by Position" class="search-bar" />
+                <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+
+        <!-- Clear button to reset the search -->
+        <form method="get" class="search-flex-item">
+            <button type="submit" name="clearSearch" class="clear-button"><i class="fa-solid fa-trash"></i></button>
+        </form>
+    </div>
+</div>
+
+<div class="job-listing">
+    @if (Model.Jobs != null && Model.Jobs.Count > 0)
+    {
+        <!-- Display job listings -->
+        <div class="job-card-container">
+            @foreach (var job in Model.Jobs)
             {
-                <tr>
-                    <td>@job.ID</td>
-                    <td>@job.PositionName</td>
-                    <td>@job.TeamName</td>
-                    <td>@job.CompanyName</td>
-                    <td>@job.Address</td>
-                    <td>@job.Salary</td>
-                    <td>@job.Experience</td>
-                    <td>@job.JobDescription</td>
-                    <td>@job.MinimumQualification</td>
-                    <td>@job.LastDate</td>
-                    <td>
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3 class="job-title">@job.PositionName</h3>
+                        <p>Company: @job.CompanyName</p>
+                        <p>Team: @job.TeamName</p>
+                        <p>Address: @job.Address</p>
+                        <p>Salary: @job.Salary</p>
+                        <p>Experience: @job.Experience</p>
+                        <p>Last Date: @job.LastDate</p>
+                        <p>Minimum Qualification: @job.MinimumQualification</p>
+                        <p>Job Description: @job.JobDescription</p>
+                    </div>
+                    <div class="apply-button">
                         <form method="post">
                             <input type="hidden" name="jobId" value="@job.ID" />
-                            <button type="submit" name="applyButton">Apply</button>
+                            <button type="submit" name="applyButton" class="style-apply">Apply</button>
                         </form>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             }
+        </div>
 
-        </tbody>
-    </table>
-}
-else
-{
-    <!-- Display message when no job listings are available -->
-    <p>No job listings available.</p>
-}
+    }
+    else
+    {
+        <!-- Display message when no job listings are available -->
+        <p>No job listings available.</p>
+    }
+</div>

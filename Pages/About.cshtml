@@ -3,4 +3,140 @@
     ViewData["Title"] = "About";
 }
 
-<h1>Hello im about page</h1>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-section">
+        <h1>About Us Page</h1>
+        <p>At EZYHIRE, our mission is to simplify and accelerate the job search process, connecting talented individuals
+            with rewarding career opportunities. Founded with a vision to revolutionize recruitment, we leverage
+            innovative technology to create a seamless platform that benefits both job seekers and employers. Committed
+            to transparency, efficiency, and user satisfaction, EZYHIRE is dedicated to reshaping the future of
+            recruitment. Whether you're an ambitious professional seeking your dream job or an employer looking for
+            top-tier talent, EZYHIRE is your trusted partner in the journey toward success. </p>
+    </div>
+
+    <h2 style="text-align:center;margin:40px;font-size:30px;">Our Team</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="team1.jpeg" alt="Jane" style="width:100%">
+                <div class="container">
+                    <h2>Arunachalam</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>As the CEO, I lead the overall vision and strategy of our company. My role involves setting
+                        ambitious goals, fostering innovation, and ensuring the organization's success. I work closely
+                        with our executive team to guide our company towards sustainable growth, building partnerships,
+                        and maintaining a culture of excellence.I'm looking forward for the
+                        tremendous growth of the company within a short span of time</p>
+                    <p>arun@example.com</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="team2.jpg" alt="Mike" style="width:100%">
+                <div class="container">
+                    <h2>Gautham S</h2>
+                    <p class="title">CTO & Co-Founder</p>
+                    <p>As the CTO, my responsibility is to drive the technological direction of our company. I lead our
+                        talented tech teams, oversee product development, and ensure our technology aligns with our
+                        business goals. My role involves staying at the forefront of industry trends, implementing
+                        cutting-edge solutions, and fostering an environment of continuous innovation."</p>
+                    <p>gautham@example.com</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="team3.jpg" alt="John" style="width:100%">
+                <div class="container">
+                    <h2>Santhosh Krishna</h2>
+                    <p class="title">CFO & Co-Founder</p>
+                    <p>As the CFO, I manage the financial health of our company. My role includes strategic financial
+                        planning, budgeting, and ensuring fiscal responsibility. I work to optimize financial
+                        performance, manage risk, and provide insights to support key business decisions. I collaborate
+                        closely with other leaders to drive the company's financial success and long-term
+                        sustainability.</p>
+                    <p>santhosh@example.com</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

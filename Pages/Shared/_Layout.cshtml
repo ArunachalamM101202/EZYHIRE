@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http
 @{
-    ViewData["Title"] = "Home page";
     // Access session variables
     var userId = Context.Session.GetString("UserId");
     var userName = Context.Session.GetString("UserName");
@@ -36,6 +35,7 @@
         }
 
         footer {
+            margin-top: 30px;
             background-color: black;
             color: white;
             text-align: center;
@@ -93,7 +93,7 @@
             @if (!string.IsNullOrEmpty(userId))
             {
                 <!-- If session is set (user is logged in), display Logout -->
-                <div class="my-nav-item"><a class="my-nav-link no-hover" style="margin-left: 600px;">Welcome @userName</a>
+                <div class="my-nav-item"><a asp-page="/Profile" class="my-nav-link no-hover">Welcome @userName</a>
                 </div>
                 <div class="my-nav-item"><a asp-page="/Logout" class="my-nav-link no-hover">Logout</a></div>
 
@@ -105,11 +105,11 @@
             }
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
 
     <footer>
         <div class="container">
@@ -117,9 +117,6 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

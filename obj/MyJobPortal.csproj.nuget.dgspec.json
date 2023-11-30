@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/arunachalamm/Projects/MyJobPortal/MyJobPortal.csproj": {}
+    "/Users/arunachalamm/Desktop/MyJobPortal/MyJobPortal.csproj": {}
   },
   "projects": {
-    "/Users/arunachalamm/Projects/MyJobPortal/MyJobPortal.csproj": {
+    "/Users/arunachalamm/Desktop/MyJobPortal/MyJobPortal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/arunachalamm/Projects/MyJobPortal/MyJobPortal.csproj",
+        "projectUniqueName": "/Users/arunachalamm/Desktop/MyJobPortal/MyJobPortal.csproj",
         "projectName": "MyJobPortal",
-        "projectPath": "/Users/arunachalamm/Projects/MyJobPortal/MyJobPortal.csproj",
+        "projectPath": "/Users/arunachalamm/Desktop/MyJobPortal/MyJobPortal.csproj",
         "packagesPath": "/Users/arunachalamm/.nuget/packages/",
-        "outputPath": "/Users/arunachalamm/Projects/MyJobPortal/obj/",
+        "outputPath": "/Users/arunachalamm/Desktop/MyJobPortal/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/arunachalamm/.nuget/NuGet/NuGet.Config"

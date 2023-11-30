@@ -7,15 +7,17 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using EllipticCurve.Utils;
 
+
 namespace MyJobPortal.Pages
 {
 
-    // Sending sms
+    //AES
+
     public static class TwilioHelper
     {
         // Replace these with your Twilio account SID, auth token, and Twilio phone number
         private const string AccountSid = "ACd7cc01b48b08e606d1e5d771e1aec955";
-        private const string AuthToken = "a9c6926ece1674548fec393a30d908e7";
+        private const string AuthToken = "92c879b66764c359f4518a09bbe7347f";
         private const string TwilioPhoneNumber = "+19093462769";
 
         public static void SendSMS(string toPhoneNumber, string messageBody)
@@ -74,11 +76,24 @@ namespace MyJobPortal.Pages
                 var jobId = Convert.ToInt32(Request.Form["jobId"]);
 
                 // Connect to the SQLite database
-                var connectionString = "Data Source=/Users/arunachalamm/Projects/MyJobPortal/DB/JobPortal.db";
+                var connectionString = "Data Source=/Users/arunachalamm/Desktop/MyJobPortal/DB/JobPortal.db";
 
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
+
+                    // check if user applied already
+                    if (UserAlreadyApplied(connection, Convert.ToInt32(HttpContext.Session.GetString("UserId")), jobId))
+                    {
+                        // User has already applied, show an error message or take appropriate action
+                        var script = "alert('You have already submitted an application for this job opportunity. Thank you for your interest!'); setTimeout(function(){ window.location.href = '/Index'; }, 1000);";
+                        Response.WriteAsync($"<script>{script}</script>");
+
+                        // Redirect to the same page (or any other page you want)
+                        return RedirectToPage("/Index");
+
+                    }
+
 
                     using (var command = connection.CreateCommand())
                     {
@@ -108,7 +123,7 @@ namespace MyJobPortal.Pages
                                 // Extract user details from the session
                                 var userName = HttpContext.Session.GetString("UserName");
                                 var userEmail = HttpContext.Session.GetString("UserEmail");
-
+                                var userId = HttpContext.Session.GetString("UserId");
                                 // Retrieve user's phone number from the database (replace this with your actual database query)
                                 var userPhoneNumber = HttpContext.Session.GetString("UserPhone");
 
@@ -116,6 +131,10 @@ namespace MyJobPortal.Pages
                                 {
                                     // Construct the SMS message
                                     var messageBody = $"Dear {userName},\n\nYour application for the {selectedJob.PositionName} role at {selectedJob.CompanyName} has been submitted successfully. We appreciate your interest and will be reviewing your qualifications. Expect to hear from us soon regarding the next steps in the hiring process.\n\nThank you for considering {selectedJob.CompanyName}.\n\nBest regards,\nThe {selectedJob.CompanyName} Hiring Team";
+
+                                    // Insert into UserJobApplications table
+                                    InsertIntoUserJobApplications(connection, Convert.ToInt32(userId), selectedJob.ID);
+
 
                                     // Send the SMS
                                     TwilioHelper.SendSMS(userPhoneNumber, messageBody);
@@ -134,7 +153,31 @@ namespace MyJobPortal.Pages
             // Redirect to the same page (or any other page you want)
             return RedirectToPage("/Index");
         }
+        private void InsertIntoUserJobApplications(SqliteConnection connection, int userId, int jobId)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO UserJobApplications (UserID, JobID) VALUES (@UserID, @JobID)";
+                command.Parameters.AddWithValue("@UserID", userId);
+                command.Parameters.AddWithValue("@JobID", jobId);
 
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private bool UserAlreadyApplied(SqliteConnection connection, int userId, int jobId)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "SELECT COUNT(*) FROM UserJobApplications WHERE UserID = @UserId AND JobID = @JobId";
+                command.Parameters.AddWithValue("@UserId", userId);
+                command.Parameters.AddWithValue("@JobId", jobId);
+
+                var count = Convert.ToInt32(command.ExecuteScalar());
+
+                return count > 0;
+            }
+        }
         public IActionResult OnGet()
         {
             // Connect to the SQLite database

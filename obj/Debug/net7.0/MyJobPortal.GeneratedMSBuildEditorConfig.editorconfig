@@ -9,55 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyJobPortal
 build_property.RootNamespace = MyJobPortal
-build_property.ProjectDir = /Users/arunachalamm/Projects/MyJobPortal/
+build_property.ProjectDir = /Users/arunachalamm/Desktop/MyJobPortal/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/arunachalamm/Projects/MyJobPortal
+build_property.MSBuildProjectDirectory = /Users/arunachalamm/Desktop/MyJobPortal
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/About.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWJvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Error.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Index.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Login.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Logout.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Privacy.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Signup.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2lnbnVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/_ViewImports.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/_ViewStart.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/arunachalamm/Projects/MyJobPortal/Pages/Shared/_Layout.cshtml]
+[/Users/arunachalamm/Desktop/MyJobPortal/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s5ef7p7bib
